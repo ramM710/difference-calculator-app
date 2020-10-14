@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author empc46
+ * @author Ram
  */
 public class DifferenceCalculator {
 
@@ -19,6 +19,8 @@ public class DifferenceCalculator {
     static String tempSecondNum = "";
 
     private static Boolean canProceed;
+
+    private static int waitTime = 5000;
 
     static {
 
@@ -50,15 +52,19 @@ public class DifferenceCalculator {
     private static Integer askInput() {
         try {
             int num = input.nextInt();
-            if (num <= 100 || num >= 999) {
+            if (num <= 100 || num > 999) {
                 System.out.println("wrong length of number!!!");
                 num = askInput();
             }
             return num;
         } catch (Exception e) {
-            System.exit(0);
-            return null;
+            clearScreen();
+
+            input = new Scanner(System.in);
+            getInputs();
+//            System.exit(0);
         }
+        return null;
     }
 
     private static void getInputs() {
@@ -186,7 +192,7 @@ public class DifferenceCalculator {
                 }
             }
 
-            Thread.sleep(1000);
+            Thread.sleep(waitTime);
             // clear the console screen...
             clearScreen();
         } catch (Exception e) {
